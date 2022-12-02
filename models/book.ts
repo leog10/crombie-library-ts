@@ -17,6 +17,7 @@ interface BookAttributes {
   id: number;
   name: string;
   price: number;
+  author_id: number;
 }
 
 interface BookCreationAttributes extends Optional<BookAttributes, 'id'> {}
@@ -34,17 +35,12 @@ class Book
   name: string;
   @Column
   price: number;
-
   @ForeignKey(() => Author)
   @Column
-  authorId: number;
+  author_id: number;
 
   @BelongsTo(() => Author)
   author: Author;
-
-  /*   @ForeignKey(() => Author)
-  @Column
-  clientId: number; */
 
   @BelongsToMany(() => Client, () => BookClient)
   clients: Client[];

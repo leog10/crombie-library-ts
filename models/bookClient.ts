@@ -4,8 +4,8 @@ import Book from './book';
 import User from './client';
 
 interface bookClientAttributes {
-  bookId: number;
-  clientId: number;
+  book_id: number;
+  client_id: number;
 }
 
 @Table
@@ -15,11 +15,11 @@ class BookClient
 {
   @ForeignKey(() => Book)
   @Column
-  bookId: number;
+  book_id: number;
 
   @ForeignKey(() => User)
   @Column
-  clientId: number;
+  client_id: number;
 }
 
 export default BookClient;

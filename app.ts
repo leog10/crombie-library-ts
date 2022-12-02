@@ -2,10 +2,9 @@ import express, {
   ErrorRequestHandler,
   NextFunction,
   Request,
-  Response,
+  Response
 } from 'express';
 import cors from 'cors';
-import productRouter from './routes/product';
 
 const app = express();
 
@@ -22,6 +21,16 @@ app.get('/', (_, res) => {
   res.status(200).json('Server API alive');
 });
 
-app.use('/', productRouter);
+/* app.get('/book', async (req, res) => {
+  const books = await Book.findAll();
+  res.send(books);
+});
+
+app.get('/author', async (req, res) => {
+  const authors = await Author.findAll();
+  res.send(authors);
+}); */
+
+// app.use('/', productRouter);
 
 export default app;

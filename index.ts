@@ -1,5 +1,5 @@
 import app from './app';
-import { PORT } from './config/config';
+import { PORT } from './config/config.js';
 import sequelize from './models';
 
 const main = async () => {

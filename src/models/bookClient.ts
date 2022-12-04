@@ -3,7 +3,7 @@ import { Column, ForeignKey, Table } from 'sequelize-typescript';
 import Book from './book';
 import User from './client';
 
-interface bookClientAttributes {
+export interface bookClientAttributes {
   book_id: number;
   client_id: number;
 }

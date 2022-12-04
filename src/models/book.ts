@@ -15,12 +15,14 @@ import BookClient from './bookClient';
 
 interface BookAttributes {
   id: number;
+  isbn: string;
   name: string;
   price: number;
   author_id: number;
 }
 
-interface BookCreationAttributes extends Optional<BookAttributes, 'id'> {}
+export interface BookCreationAttributes
+  extends Optional<BookAttributes, 'id'> {}
 
 @Table
 class Book
@@ -31,6 +33,8 @@ class Book
   @AutoIncrement
   @Column
   id: number;
+  @Column
+  isbn: string;
   @Column
   name: string;
   @Column

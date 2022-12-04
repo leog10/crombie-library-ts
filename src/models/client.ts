@@ -12,7 +12,8 @@ interface ClientAttributes {
   books?: Book[];
 }
 
-interface ClientCreationAttributes extends Optional<ClientAttributes, 'id'> {}
+export interface ClientCreationAttributes
+  extends Optional<ClientAttributes, 'id'> {}
 
 @Table
 class Client

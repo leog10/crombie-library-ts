@@ -1,5 +1,7 @@
 const { resolve } = require('path');
 
 module.exports = {
-  config: resolve('config', 'config.js')
+  config: resolve('src/config', 'config.js'),
+  'models-path': resolve('src', 'models'),
+  'migrations-path': resolve('src', 'migrations')
 };

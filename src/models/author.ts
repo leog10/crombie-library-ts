@@ -16,7 +16,8 @@ interface AuthorAttributes {
   books?: Book[];
 }
 
-interface AuthorCreationAttributes extends Optional<AuthorAttributes, 'id'> {}
+export interface AuthorCreationAttributes
+  extends Optional<AuthorAttributes, 'id'> {}
 
 @Table
 class Author

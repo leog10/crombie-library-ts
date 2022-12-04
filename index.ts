@@ -1,6 +1,6 @@
 import app from './app';
-import { PORT } from './config/config.js';
-import sequelize from './models';
+import { PORT } from './src/config/config.js';
+import sequelize from './src/models';
 
 const main = async () => {
   try {

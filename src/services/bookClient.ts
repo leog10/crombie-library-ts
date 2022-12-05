@@ -1,15 +1,32 @@
-import Book from '../models/book';
 import BookClient, { bookClientAttributes } from '../models/bookClient';
-import Client from '../models/client';
+import * as bookServices from './book';
+import * as clientServices from './client';
 
 export const bookClientRent = async (client_id: number, book_id: number) => {
-  const client = await Client.findByPk(client_id);
-  const book = await Book.findByPk(book_id);
+  const client = await clientServices.getClientById(client_id);
+  const book = await bookServices.getBookById(book_id);
 
-  if (client && book && client?.budget < book?.price) {
-    return;
+  if (!client) {
+    throw new Error('client not found');
   }
 
+  if (!book) {
+    throw new Error('book not found');
+  }
+
+  if (client.budget < book.price) {
+    throw new Error('Client budget is not enough to rent this book');
+  }
+
+  if (book.stock === 0) {
+    throw new Error('Book out of stock');
+  }
+
+  const clientBudget = await clientServices.updateBudget(client_id, book.price);
+
+  const bookStock = await bookServices.updateStock(book_id);
+
   const result = await BookClient.create({ client_id, book_id });
-  return result;
+
+  return { result, client: clientBudget, book: bookStock };
 };

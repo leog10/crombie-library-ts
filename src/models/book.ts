@@ -18,6 +18,7 @@ interface BookAttributes {
   isbn: string;
   name: string;
   price: number;
+  stock: number;
   author_id: number;
 }
 
@@ -39,6 +40,8 @@ class Book
   name: string;
   @Column
   price: number;
+  @Column
+  stock: number;
   @ForeignKey(() => Author)
   @Column
   author_id: number;

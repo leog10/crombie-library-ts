@@ -13,13 +13,19 @@ export const getAllBooks = async (req: Request, res: Response) => {
 
 export const createBook = async (req: Request, res: Response) => {
   try {
-    const { isbn, name, price, author_id } = req.body;
+    const { isbn, name, price, stock, author_id } = req.body;
 
-    if (!isbn || !name || !price || !author_id) {
+    if (!isbn || !name || !price || !stock || !author_id) {
       throw new Error('All fields are mandatory');
     }
 
-    const result = await bookServices.createBook(isbn, name, price, author_id);
+    const result = await bookServices.createBook(
+      isbn,
+      name,
+      price,
+      stock,
+      author_id
+    );
     return res.status(201).send(result);
   } catch (error: any) {
     console.log(error);

@@ -7,8 +7,8 @@ import express, {
 import cors from 'cors';
 import authorRouter from './src/routes/author';
 import bookRouter from './src/routes/book';
-import bookClientRouter from './src/routes/bookClient';
-import clientRouter from './src/routes/client';
+import rentRouter from './src/routes/rental';
+import appRouter from './src/routes';
 
 const app = express();
 
@@ -25,6 +25,6 @@ app.get('/', (_, res) => {
   res.status(200).json('Server API alive');
 });
 
-app.use('/', authorRouter, bookRouter, bookClientRouter, clientRouter);
+app.use('/api', appRouter);
 
 export default app;

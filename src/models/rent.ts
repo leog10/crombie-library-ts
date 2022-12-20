@@ -9,10 +9,7 @@ export interface bookClientAttributes {
 }
 
 @Table
-class BookClient
-  extends Model<bookClientAttributes>
-  implements bookClientAttributes
-{
+class Rent extends Model<bookClientAttributes> implements bookClientAttributes {
   @ForeignKey(() => Book)
   @Column
   book_id: number;
@@ -22,4 +19,4 @@ class BookClient
   client_id: number;
 }
 
-export default BookClient;
+export default Rent;

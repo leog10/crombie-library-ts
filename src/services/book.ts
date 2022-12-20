@@ -1,4 +1,4 @@
-import Book, { BookCreationAttributes } from '../models/book';
+import Book from '../models/book';
 
 export const getAllBooks = async () => {
   const books = await Book.findAll();

@@ -1,20 +1,25 @@
-import Client, { ClientCreationAttributes } from '../models/client';
+import Book from '../models/book';
+import Client from '../models/client';
 
 type Op = 'increase' | 'decrease';
 
 export const getAllClients = async () => {
-  const clients = await Client.findAll();
+  const clients = await Client.findAll({
+    attributes: {
+      exclude: ['password']
+    }
+  });
   return clients;
 };
 
-export const createClient = async (client: ClientCreationAttributes) => {
-  const result = await Client.create(client);
-  return result;
-};
-
 export const getClientById = async (id: number) => {
-  const result = await Client.findByPk(id);
-  return result;
+  const client = await Client.findByPk(id, {
+    attributes: { exclude: ['password'] },
+    include: {
+      model: Book
+    }
+  });
+  return client;
 };
 
 export const updateBudget = async (id: number, money: number, op: Op) => {

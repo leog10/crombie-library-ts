@@ -1,14 +1,15 @@
 import express from 'express';
 import {
-  createClient,
   getAllClients,
+  getClientById,
   updateBudget
 } from '../controllers/client';
+import { auth } from '../middlewares/auth';
 
 const clientRouter = express.Router();
 
-clientRouter.get('/client', getAllClients);
-clientRouter.post('/client', createClient);
-clientRouter.put('/client/:id', updateBudget);
+clientRouter.get('/client', auth, getAllClients);
+clientRouter.get('/client/:id', auth, getClientById);
+clientRouter.put('/client/:id', auth, updateBudget);
 
 export default clientRouter;

@@ -11,7 +11,7 @@ import {
 import { Optional } from 'sequelize';
 import Author from './author';
 import Client from './client';
-import BookClient from './bookClient';
+import Rent from './rent';
 
 interface BookAttributes {
   id: number;
@@ -49,7 +49,7 @@ class Book
   @BelongsTo(() => Author)
   author: Author;
 
-  @BelongsToMany(() => Client, () => BookClient)
+  @BelongsToMany(() => Client, () => Rent)
   clients: Client[];
 }
 

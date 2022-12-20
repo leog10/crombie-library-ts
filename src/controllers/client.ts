@@ -13,22 +13,11 @@ export const getAllClients = async (req: Request, res: Response) => {
   }
 };
 
-export const createClient = async (req: Request, res: Response) => {
-  try {
-    const client = req.body;
-    const result = await clientServices.createClient(client);
-    return res.status(201).send(result);
-  } catch (error) {
-    console.log(error);
-    res.status(400).send({ error: 'Something went wrong' });
-  }
-};
-
 export const getClientById = async (req: Request, res: Response) => {
   try {
-    const { id } = req.body;
+    const id = Number(req.params.id);
     const result = await clientServices.getClientById(id);
-    return res.status(200).send(result);
+    return res.status(200).json(result);
   } catch (error) {
     console.log(error);
     res.status(400).send({ error: 'Something went wrong' });
